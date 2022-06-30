@@ -1,0 +1,60 @@
+.active-modal {
+  .item {
+    & + .item {
+      margin-top: 12px;
+    }
+
+    input {
+      margin-top: 6px;
+    }
+
+    .pay-button {
+      margin-left: 12px;
+    }
+
+    .price {
+      margin-left: 12px;
+      font-size: 14px;
+      
+      span {
+        color: red;
+      }
+    }
+  }
+
+  .pay-code {
+    h2 {
+      font-size: 16px;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    .loading {
+      display: block;
+      margin: 34px auto;
+    }
+  }
+}
+
+.ant-modal-body {
+  padding: 12px 24px;
+}
+
+.ant-image-preview-operations {
+  li {
+    &:not(:first-child) {
+      display: none;
+    }
+  }
+}
+
+.ant-image-preview-img {
+  width: 90%;
+  max-width: 90%;
+}

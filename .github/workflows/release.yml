@@ -1,0 +1,42 @@
+name: Release
+on:
+    push:
+        tags:
+        - '*'
+jobs:
+    publish-tauri:
+        strategy:
+            fail-fast: false
+            matrix:
+                    include:
+                    - os: macos-latest
+                      NAME: mac
+                    - os: windows-latest
+                      NAME: windows
+        runs-on: ${{ matrix.os}}
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+            - name: Install rust stable
+              uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: stable
+            - name: Install webkit2gtk (ubuntu only)
+              if: matrix.NAME == 'linux'
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y webkit2gtk-4.0
+            - name: Install app dependencies and build it
+              run: npm i && npm run build
+            - uses: tauri-apps/tauri-action@dev
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                tagName: v__VERSION__
+                releaseName: "v__VERSION__"
+                releaseBody: "See the assets to download this version and install."
+                releaseDraft: false
+                prerelease: false

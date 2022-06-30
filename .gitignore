@@ -1,0 +1,7 @@
+/dist
+/build
+/temp
+/node_modules
+
+.tmp
+.DS_Store
