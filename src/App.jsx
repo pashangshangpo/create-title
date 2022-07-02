@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Button, Input, message } from 'antd'
 import { path, fs } from '@tauri-apps/api'
 import { titleJoins } from './common'
@@ -8,8 +8,14 @@ import './App.less'
 function App() {
   const [showCreateMaster, setShowCreateMaster] = useState(false)
   const [itemMasterIndex, setItemMasterIndex] = useState(-1)
-  const [masterList, setMasterList] = useState([])
+  const [masterList, setMasterList] = useState(() => {
+    return JSON.parse(localStorage.getItem('local-data')) || []
+  })
   const [currentMasterValue, setCurrentMasterValue] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('local-data', JSON.stringify(masterList))
+  }, [masterList])
 
   const isMasterEmpty = useMemo(() => {
     return masterList.length === 0
