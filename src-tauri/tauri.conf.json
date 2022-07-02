@@ -79,8 +79,8 @@
     "windows": [
       {
         "title": "标题生成工具",
-        "width": 600,
-        "height": 400,
+        "width": 720,
+        "height": 450,
         "resizable": false,
         "fullscreen": false
       }

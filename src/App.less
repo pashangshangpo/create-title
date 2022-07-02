@@ -1,14 +1,6 @@
 .app {
-  .message {
-    text-align: center;
-
-    &[data-message="false"] {
-      visibility: hidden;
-    }
-  }
-  
-  .body {
-    width: 540px;
+  .master {
+    width: 96%;
     margin: 0 auto;
     padding-top: 18px;
     text-align: center;
@@ -95,7 +87,7 @@
       background-color: #fff;
 
       .model-body {
-        margin: 40px 50px;
+        margin: 80px 50px;
 
         textarea {
           border-color: cornflowerblue;
@@ -110,6 +102,87 @@
           background-color: cornflowerblue;
           border-color: cornflowerblue;
         }
+      }
+    }
+  }
+
+  .master-detail {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .main {
+      display: flex;
+      flex: 1;
+
+      .section {
+        flex: 1;
+        padding: 0 12px;
+        overflow: hidden;
+        
+        &:not(:last-child) {
+          border-right: 1px solid #f6f6f6;
+        }
+
+        > div {
+          position: relative;
+          height: 40px;
+          line-height: 40px;
+          padding-right: 12px;
+          border-bottom: 1px solid #f6f6f6;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 13px;
+
+          &:hover .remove {
+            display: block;
+          }
+  
+          .remove {
+            display: none;
+            position: absolute;
+            top: -4px;
+            right: 0px;
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      border-top: 1px solid #eee;
+
+      .create-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 35px;
+        background-color: cornflowerblue;
+        font-size: 14px;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+
+      .back-list {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 35px;
+        background-color: #97b3e3;
+        font-size: 14px;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
       }
     }
   }
