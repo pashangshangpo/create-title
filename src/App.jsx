@@ -68,24 +68,8 @@ function App() {
     setItemMasterIndex(index)
   }
 
-  const handleAddItemMaster = (index) => (e) => {
-    if (e.keyCode !== 13) {
-      return
-    }
-
-    if (e.target.value) {
-      if (itemMaster.list[index].includes(e.target.value)) {
-        return
-      }
-
-      itemMaster.list[index].push(e.target.value)
-
-      setMasterList([...masterList])
-    }
-  }
-
-  const handleRemoveItemMaster = (listIndex, index) => (e) => {
-    itemMaster.list[listIndex].splice(index, 1)
+  const handleSectionChange = (listIndex) => (e) => {
+    itemMaster.list[listIndex] = e.target.value.trim().split('\n')
 
     setMasterList([...masterList])
   }
@@ -177,19 +161,11 @@ function App() {
             itemMaster.list.map((section, index) => {
               return (
                 <div key={index} className='section'>
-                  {
-                    section.map((name, i) => {
-                      return (
-                        <div key={name}>
-                          <span>{name}</span>
-                          <span className='remove' onClick={handleRemoveItemMaster(index, i)}>X</span>
-                        </div>
-                      )
-                    })
-                  }
-                  <div style={{ paddingRight: 0 }}>
-                    <Input key={Date.now()} placeholder='请输入关键词' onKeyDown={handleAddItemMaster(index)} />
-                  </div>
+                  <textarea
+                    placeholder='请输入关键词'
+                    onChange={handleSectionChange(index)}
+                    defaultValue={section.join('\n')}
+                  ></textarea>
                 </div>
               )
             })

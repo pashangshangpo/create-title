@@ -117,36 +117,21 @@
 
       .section {
         flex: 1;
-        padding: 0 12px;
         overflow: hidden;
         
         &:not(:last-child) {
           border-right: 1px solid #f6f6f6;
         }
 
-        > div {
-          position: relative;
-          height: 40px;
-          line-height: 40px;
-          padding-right: 12px;
-          border-bottom: 1px solid #f6f6f6;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 13px;
-
-          &:hover .remove {
-            display: block;
-          }
-  
-          .remove {
-            display: none;
-            position: absolute;
-            top: -4px;
-            right: 0px;
-            font-size: 12px;
-            cursor: pointer;
-          }
+        textarea {
+          width: 100%;
+          height: 100%;
+          padding: 6px 12px;
+          outline: none;
+          border: none;
+          resize: none;
+          font-size: 14px;
+          line-height: 24px;
         }
       }
     }
