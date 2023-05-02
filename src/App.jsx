@@ -88,11 +88,13 @@ function App() {
 
   const exportTitles = async (titles) => {
     const desktop = await path.desktopDir()
-    const filePath = await path.join(desktop, itemMaster.name + '.json')
+    const filePath = await path.join(desktop, itemMaster.name + '.txt')
 
-    await fs.writeFile({ path: filePath, contents: JSON.stringify({ name: itemMaster.name, list: titles }) })
+    await fs.writeFile({ path: filePath, contents: titles.sort(() => {
+      return Math.random() > 0.5 ? -1 : 1
+    }).join('\n') })
 
-    message.success('导出成功！')
+    message.success('生成成功！')
   }
 
   const renderMaster = () => {
